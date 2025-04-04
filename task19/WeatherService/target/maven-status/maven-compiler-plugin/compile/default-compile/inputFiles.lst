@@ -1,0 +1,6 @@
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/controller/WeatherController.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/dto/Location.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/model/Weather.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/repository/WeatherRepository.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/dto/Person.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/WeatherService/src/main/java/com/hiraru/weatherservice/WeatherService.java

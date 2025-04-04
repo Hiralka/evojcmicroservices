@@ -1,0 +1,4 @@
+com/hiraru/locationservice/controller/LocationController.class
+com/hiraru/locationservice/model/Location.class
+com/hiraru/locationservice/repository/LocationRepository.class
+com/hiraru/locationservice/LocationService.class

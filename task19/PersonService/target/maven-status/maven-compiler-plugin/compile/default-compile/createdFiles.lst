@@ -1,0 +1,4 @@
+com/hiraru/personservice/PersonService.class
+com/hiraru/personservice/model/Person.class
+com/hiraru/personservice/controller/PersonController.class
+com/hiraru/personservice/repository/PersonRepository.class
