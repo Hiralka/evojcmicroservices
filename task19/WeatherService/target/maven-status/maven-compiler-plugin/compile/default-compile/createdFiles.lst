@@ -1,6 +1,0 @@
-com/hiraru/weatherservice/controller/WeatherController.class
-com/hiraru/weatherservice/model/Weather.class
-com/hiraru/weatherservice/dto/Person.class
-com/hiraru/weatherservice/WeatherService.class
-com/hiraru/weatherservice/dto/Location.class
-com/hiraru/weatherservice/repository/WeatherRepository.class

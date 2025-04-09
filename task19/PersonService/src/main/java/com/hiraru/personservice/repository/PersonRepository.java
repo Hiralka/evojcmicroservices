@@ -1,9 +1,7 @@
 package com.hiraru.personservice.repository;
 
 import com.hiraru.personservice.model.Person;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface PersonRepository extends CrudRepository<Person, Integer> {
+public interface PersonRepository extends JpaRepository<Person, Long> {
 }

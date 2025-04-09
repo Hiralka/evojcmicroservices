@@ -1,0 +1,22 @@
+server:
+  port: 8085
+
+spring:
+  application:
+    name: weather-service
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=1m
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+
+openweather:
+  api:
+    key: 8cfa2fe061fd6e75ce9a761553c1b6d9
+    url: https://api.openweathermap.org/data/2.5/weather

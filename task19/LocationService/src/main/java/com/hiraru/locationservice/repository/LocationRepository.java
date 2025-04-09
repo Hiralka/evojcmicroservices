@@ -3,5 +3,8 @@ package com.hiraru.locationservice.repository;
 import com.hiraru.locationservice.model.Location;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface LocationRepository extends JpaRepository<Location, Integer> {
+import java.util.Optional;
+
+public interface LocationRepository extends JpaRepository<Location, Long> {
+    Optional<Location> findByName(String name);
 }

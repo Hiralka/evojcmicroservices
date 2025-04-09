@@ -1,4 +1,7 @@
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/config/ServiceProperties.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/model/Person.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/repository/PersonRepository.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/controller/PersonController.java
-/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/PersonService.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/config/PersonConfig.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/PersonApplication.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/PersonService/src/main/java/com/hiraru/personservice/model/Weather.java

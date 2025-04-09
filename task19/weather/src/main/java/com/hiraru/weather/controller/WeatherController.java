@@ -10,6 +10,7 @@ package com.hiraru.weather.controller;
  */
 import com.hiraru.weather.model.Root;
 import com.hiraru.weather.config.WeatherConfig;
+import com.hiraru.weather.model.Weather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.ResponseEntity;
@@ -30,18 +31,18 @@ public class WeatherController {
         this.weatherConfig = weatherConfig;
     }
 
-    @GetMapping
-    @Cacheable(value = "weatherCache", key = "{#lat, #lon}", unless = "#result == null")
-    public ResponseEntity<Root> getWeather(
+@GetMapping
+    public ResponseEntity<Weather> getWeather(
             @RequestParam double lat,
             @RequestParam double lon) {
         
-        String apiUrl = String.format(
-            "https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=%s&units=metric",
-            lat, lon, weatherConfig.getApiKey()
-        );
+        String url = String.format("%s?lat=%s&lon=%s&appid=%s&units=metric",
+                weatherConfig.getApiUrl(),
+                lat,
+                lon,
+                weatherConfig.getApiKey());
         
-        Root response = restTemplate.getForObject(apiUrl, Root.class);
+        Weather response = restTemplate.getForObject(url, Weather.class);
         return ResponseEntity.ok(response);
     }
 }

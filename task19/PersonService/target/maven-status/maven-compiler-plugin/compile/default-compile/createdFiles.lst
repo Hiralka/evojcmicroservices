@@ -1,4 +1,8 @@
-com/hiraru/personservice/PersonService.class
+com/hiraru/personservice/config/PersonConfig.class
 com/hiraru/personservice/model/Person.class
+com/hiraru/personservice/model/Weather.class
+com/hiraru/personservice/PersonApplication.class
+com/hiraru/personservice/config/ServiceProperties$Location.class
 com/hiraru/personservice/controller/PersonController.class
 com/hiraru/personservice/repository/PersonRepository.class
+com/hiraru/personservice/config/ServiceProperties.class

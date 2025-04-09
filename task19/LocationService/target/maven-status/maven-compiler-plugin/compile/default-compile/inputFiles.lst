@@ -1,4 +1,6 @@
-/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/LocationService.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/controller/LocationController.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/config/LocationConfig.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/LocationApplication.java
+/home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/model/Weather.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/repository/LocationRepository.java
 /home/hiraru/Documents/JAVArepos/evojcmicroservices/task19/LocationService/src/main/java/com/hiraru/locationservice/model/Location.java
