@@ -8,9 +8,8 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class LocationConfig {
     
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate() {
+    @Bean  // Для внешних API (без балансировки)
+    public RestTemplate plainRestTemplate() {
         return new RestTemplate();
     }
 }

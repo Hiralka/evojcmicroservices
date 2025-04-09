@@ -1,6 +1,7 @@
 com/hiraru/locationservice/model/Weather.class
 com/hiraru/locationservice/model/Weather$WeatherDescription.class
 com/hiraru/locationservice/config/LocationConfig.class
+com/hiraru/locationservice/config/WeatherConfig.class
 com/hiraru/locationservice/controller/LocationController.class
 com/hiraru/locationservice/model/Location.class
 com/hiraru/locationservice/repository/LocationRepository.class

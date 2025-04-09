@@ -45,4 +45,5 @@ public class WeatherController {
         Weather response = restTemplate.getForObject(url, Weather.class);
         return ResponseEntity.ok(response);
     }
+  
 }

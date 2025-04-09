@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
@@ -69,14 +70,39 @@ public class PersonController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/{id}/weather")
-    public ResponseEntity<Weather> getWeatherForPerson(@PathVariable Long id) {
-        return repository.findById(id)
-                .map(person -> {
-                    String url = locationServiceUrl + "/location?name=" + person.getLocation();
-                    Weather weather = restTemplate.getForObject(url, Weather.class);
-                    return ResponseEntity.ok(weather);
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
+@GetMapping("/{id}/weather")
+public ResponseEntity<Weather> getWeatherForPerson(@PathVariable Long id) {
+    return repository.findById(id)
+            .map(person -> {
+                String url = locationServiceUrl + "/location/weather?name=" + person.getLocation();
+                
+                Map<String, Object> response = restTemplate.getForObject(url, Map.class);
+                
+                if (response == null) {
+                    throw new RuntimeException("Location Service returned empty response");
+                }
+
+                Weather weather = new Weather();
+                
+                Map<String, Object> mainData = (Map<String, Object>) response.get("main");
+                if (mainData != null) {
+                    weather.setTemp((Double) mainData.get("temp"));
+                    weather.setFeels_like((Double) mainData.get("feels_like"));
+                    weather.setTemp_min((Double) mainData.get("temp_min"));
+                    weather.setTemp_max((Double) mainData.get("temp_max"));
+                    weather.setPressure((Integer) mainData.get("pressure"));
+                    weather.setHumidity((Integer) mainData.get("humidity"));
+                }
+
+                List<Map<String, Object>> weatherList = (List<Map<String, Object>>) response.get("weather");
+                if (weatherList != null && !weatherList.isEmpty()) {
+                    weather.setDescription((String) weatherList.get(0).get("description"));
+                }
+
+                weather.setCity((String) response.get("name"));
+
+                return ResponseEntity.ok(weather);
+            })
+            .orElse(ResponseEntity.notFound().build());
+}
 }

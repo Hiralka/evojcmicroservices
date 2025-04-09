@@ -1,5 +1,6 @@
 package com.hiraru.locationservice.controller;
 
+import com.hiraru.locationservice.config.WeatherConfig;
 import com.hiraru.locationservice.model.Location;
 import com.hiraru.locationservice.repository.LocationRepository;
 import org.springframework.http.HttpStatus;
@@ -8,17 +9,27 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 @RestController
 @RequestMapping("/location")
 public class LocationController {
 
-    private final LocationRepository repository;
+    private final WeatherConfig weatherConfig;
+    @Qualifier("plainRestTemplate") 
     private final RestTemplate restTemplate;
+    private final LocationRepository repository;
 
-    public LocationController(LocationRepository repository, RestTemplate restTemplate) {
-        this.repository = repository;
+ @Autowired
+    public LocationController(
+            WeatherConfig weatherConfig,
+            RestTemplate restTemplate,
+            LocationRepository repository
+    ) {
+        this.weatherConfig = weatherConfig;
         this.restTemplate = restTemplate;
+        this.repository = repository;
     }
 
     @GetMapping
@@ -66,14 +77,26 @@ public class LocationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/weather")
-    public ResponseEntity<String> getWeather(@RequestParam String name) {
-        return repository.findByName(name)
-                .map(location -> {
-                    String weatherServiceUrl = "http://weather-service/weather?lat=" + 
-                            location.getLatitude() + "&lon=" + location.getLongitude();
-                    return ResponseEntity.ok(restTemplate.getForObject(weatherServiceUrl, String.class));
-                })
-                .orElse(ResponseEntity.notFound().build());
-    }
+@GetMapping("/weather")
+public ResponseEntity<String> getWeatherByCityName(@RequestParam String name) {
+    return repository.findByName(name)
+            .map(location -> {
+                String url = String.format("%s?lat=%s&lon=%s&appid=%s&units=metric",
+                        weatherConfig.getApiUrl(),
+                        location.getLatitude(),
+                        location.getLongitude(),
+                        weatherConfig.getApiKey());
+                
+                String jsonResponse = restTemplate.getForObject(url, String.class);
+                
+
+                String prettyJson = jsonResponse
+                        .replace(",", ",\n  ")
+                        .replace("{", "{\n  ")
+                        .replace("}", "\n}");
+                
+                return ResponseEntity.ok(prettyJson);
+            })
+            .orElse(ResponseEntity.notFound().build());
+}
 }
